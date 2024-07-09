@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Serveur;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ServeurController extends Controller
 {
     public function index ()
     {
-        $serveurs = Serveur::paginate(10);
-        return view('admin.serveur.index', compact('serveurs'));
+        // $serveurs = Serveur::paginate(10);
+        return view('admin.serveur.index');
     }
     public function create ()
     {
@@ -20,17 +21,15 @@ class ServeurController extends Controller
     public function edit($id)
     {
         $serveur = Serveur::findOrFail($id);
-        return view('admin.seveur.index', compact('serveur'));
+        return view('admin.serveur.index', compact('serveurs'));
     }
     
     public function update(Request $request, $id)
     {
-        
         $request->validate([
             'nomServeur' => 'required|string|max:255',
             'adresseIP' => 'required|ip',
         ]);
-        
         $serveur = Serveur::findOrFail($id);
         $serveur->update($request->all());
         return redirect()->route('serveur.index')->with('success', 'Serveur a été modifieé avec success .');
@@ -38,9 +37,9 @@ class ServeurController extends Controller
 
     public function destroy($id)
     {
-    $serveur = Serveur::findOrFail($id);
-    $serveur->delete();
-    return redirect()->route('serveurs.index')->with('success', 'Serveur a été supprimé avec success.');
+        $serveur = Serveur::findOrFail($id);
+        $serveur->delete();
+        return redirect()->route('serveurs.index')->with('success', 'Serveur a été supprimé avec success.');
     }
 
     public function store(Request $request)

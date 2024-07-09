@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dev;
 
 use Illuminate\Http\Request;
+use App\Models\Module;
+use App\Models\Version;
+use App\Http\Controllers\Controller;
 
-class DeploimenntController extends Controller
+
+class DevController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -19,7 +23,13 @@ class DeploimenntController extends Controller
      */
     public function create()
     {
-        //
+        $modules= Module::All();
+        $versions= Version::All();
+        return view('dev.requete.create',[
+            'modules'=>$modules,
+            'versions'=>$versions
+        ]);
+  
     }
 
     /**
@@ -43,7 +53,7 @@ class DeploimenntController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $requetes= Requete::where($id,'idUser');
     }
 
     /**

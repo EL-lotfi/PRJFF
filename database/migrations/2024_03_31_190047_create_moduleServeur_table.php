@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('versions', function (Blueprint $table) {
-            $table->id('idVersion');
-            $table->double('numVersion');
+        Schema::create('module_serveur', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('idModule')->constrained('modules','idModule');
+            $table->foreignId('idServeur')->constrained('serveurs','idServeur');
+            $table->string('intitule');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
-        Schema::dropIfExists('versions');
+        Schema::dropIfExists('module_serveur');
     }
 };

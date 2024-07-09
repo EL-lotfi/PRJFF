@@ -17,9 +17,10 @@ class VersionFactory extends Factory
         $moduleId = Module::inRandomOrder()->value('idModule');
 
         return [
-            'numVersion' => $this->faker->randomNumber(),
-            'dateVersion' => $this->faker->date(),
             'idModule' => $moduleId,
+            'numVersion' => $this->faker->randomFloat(1, 1, 10),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

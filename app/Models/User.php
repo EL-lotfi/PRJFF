@@ -45,8 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
     public function requetes()
     {
-        return $this->hasMany(Requete::class,'idRequete');
+        return $this->hasMany(Requete::class,'idUser');
     }
 }

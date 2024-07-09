@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Deploiment;
 use App\Models\Requete;
 use App\Models\Module;
-use App\Models\Version;
-
-
 
 class Serveur extends Model
 {
@@ -18,19 +14,24 @@ class Serveur extends Model
     
 
     protected $fillable = [
-        'intitule',
-        'type',
+        'typeServeur',
+        'typeConnexion',
         'host',
         'dbName',
         'username',
         'password'
     ];
 
-    public function module()
+    public function modules()
     {
-        return $this->belongsToMany(Module::class,'module_serveur', 'idModule', 'idServeur')
+        return $this->belongsToMany(Module::class,'module_serveur','idModule','idServeur')
                     ->withPivot('intitule');
     }
-   
+
+    public function requetes()
+    {
+        return $this->belongsToMany(Requete::class,'deploiments','idRequete','idServeur')
+                    ->withPivot('typeDep','listToDo','descr');
+    }  
 };
 

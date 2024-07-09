@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Serveur;
 use App\Models\Version;
+use App\Models\Requete;
 
 class Module extends Model
 {
@@ -21,16 +22,23 @@ class Module extends Model
     protected $fillable = [
         'nomModule',
     ];
-    public function server()
-    {
-        return $this->belongsToMany(Serveur::class,'module_serveur', 'idModule', 'idServeur')
-                    ->withPivot('intitule');
-
-    }
-
+    
     public function versions()
     {
         return $this->hasMany(Version::class,'idVersion');
+    }
+
+    public function requetes()
+    {
+        return $this->hasMany(Requete::class, 'idModule');
+        
+    }
+    
+    public function serveurs()
+    {
+        return $this->belongsToMany(Serveur::class)
+                    ->withPivot('intitule');;
+
     }
 
 }

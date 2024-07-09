@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('requetesSql');
             $table->foreignId('idUser')->constrained('users','idUser');
             $table->foreignId('idVersion')->constrained('versions', 'idVersion'); 
+            $table->foreignId('idModule')->constrained('modules', 'idModule'); 
             $table->timestamps();
         });
     }

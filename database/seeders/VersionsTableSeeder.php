@@ -15,7 +15,7 @@ class VersionsTableSeeder extends Seeder
         public function run()
         {
             // Create 30 versions with random module associations
-            Version::factory(30)->create();
+            Version::factory(20)->create();
                
         }
         

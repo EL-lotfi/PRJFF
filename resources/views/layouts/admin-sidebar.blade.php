@@ -6,12 +6,12 @@
     </x-slot>
     {{ __('Suivi des requêtes') }}
 </x-sidebar-nav-link>
-<button class="toggle-btn focus:outline-none md:hidden">
+<!-- <button class="toggle-btn focus:outline-none bg-black md:m"> -->
     <!-- Hamburger Icon SVG -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
-</button>
+</button> -->
 <x-sidebar-nav-link :href="route('serveur.index')" :active="request()->routeIs('serveur.index')" class="mt-7">
     <x-slot name="icon">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

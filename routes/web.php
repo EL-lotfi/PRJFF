@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ServeurController;
-use App\Http\Controllers\RequeteController;
-use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\ServeurController;
+use App\Http\Controllers\admin\RequeteController;
+use App\Http\Controllers\dev\DevController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,12 +27,12 @@ Route::get('/superadmin', function () {
     return view('superadmin.superadmin');
 })->middleware(['auth', 'verified' , 'superadmin'])->name('superadmin');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {  
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+//*******************admin**********************//
 ///////////////////////requete///////////////////////////////////
 Route::middleware(['admin', 'auth', 'verified'])->group(function () {
     Route::get('/admin/requete', [RequeteController::class, 'index'])->name('requete.index');
@@ -61,6 +61,17 @@ Route::middleware(['admin', 'auth', 'verified'])->group(function () {
     Route::get('/admin/module/{id}/edit', [ModuleController::class, 'edit'])->name('module.edit');
     Route::put('/admin/module/{id}/update', [ModuleController::class, 'update'])->name('module.update');
     Route::delete('/admin/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('module.destroy');
+});
+
+//*******************dev**********************//
+///////////////////requtes//////////////////////
+Route::middleware(['standard', 'auth', 'verified'])->group(function () {
+    Route::get('/dev/requete', [DevController::class, 'index'])->name('module.index');
+    Route::get('/dev/requete/create', [DevController::class, 'create'])->name('requete.devInsert');
+    Route::post('/dev/requete/store', [DevController::class, 'store'])->name('module.store'); 
+    Route::get('/dev/requete/{id}/edit', [DevController::class, 'edit'])->name('module.edit');
+    Route::put('/dev/requete/{id}/update', [DevController::class, 'update'])->name('module.update');
+    Route::delete('/dev/requete/{id}/destroy', [DevController::class, 'destroy'])->name('module.destroy');
 });
 
 

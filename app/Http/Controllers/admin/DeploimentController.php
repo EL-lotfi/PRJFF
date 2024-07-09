@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\Module;
+use App\Http\Controllers\Controller;
 
-
-class ModuleController extends Controller
+class DeploimentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.module.index');
+        //
     }
 
     /**

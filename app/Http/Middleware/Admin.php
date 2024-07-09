@@ -24,8 +24,8 @@ class Admin
         $userrole=Auth::guard('web')->user()->role;
         Log::info('User role: '.$userrole);
         if($userrole==3){
-            Log::info('Redirecting to dashboard');
-            return redirect()->route('dashboard');
+            Log::info('Redirecting to dev dashboard');
+            return redirect()->route('requete.devInsert');
         }
         elseif($userrole==2){
             Log::info('Redirecting to admin');

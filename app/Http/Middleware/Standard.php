@@ -31,7 +31,7 @@ class Standard
             Log::info('Redirecting to admin');
             return redirect()->route('admin');
         }
-        elseif ($userrole == 1 ){
+        elseif ($userrole == 1 ){   
             Log::info('Redirecting to superadmin');
             return redirect()->route('superadmin');
         }

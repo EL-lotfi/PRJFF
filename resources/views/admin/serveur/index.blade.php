@@ -14,12 +14,11 @@
      @include('layouts.navigation')
     </div>
     <div class="flex flex-grow">
-    <div class="mt-0 text-white w-64 flex-shrink-0 bg-green-100">
+    <div class="mt-0 text-white w-64 flex-shrink-0 ">
       @include('layouts.admin-sidebar')
     </div>
         <!-- Main Content -->
-    
-      <livewire:serveurs-table>
-<!-- Include JS -->
+        <livewire:serveurs-table>
+    <!-- Include JS -->
 </body>
 </html>

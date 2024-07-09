@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         Modulestableseeder::class,
         Versionstableseeder::class,
         Serverstableseeder::class,
-        Requetestableseeder::class,
+        RequetesTableSeeder::class,
+        ModuleserveurTableSeeder::class,
+        DeploimentsTableSeeder::class,
     ]);
 
 

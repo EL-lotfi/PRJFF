@@ -15,10 +15,10 @@ class ModuleFactory extends Factory
     public function definition()
     {
         // Get random server ID from existing servers
-        $serverId = Serveur::inRandomOrder()->value('idServeur');
-
         return [
             'nomModule' => $this->faker->word(),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

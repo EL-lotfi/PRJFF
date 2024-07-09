@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('serveurs', function (Blueprint $table) {
             $table->id('idServeur');
-            $table->string('intitule');
-            $table->string('type');
+            $table->string('typeConnexion');
+            $table->string('typeServeur');
             $table->string('dbName');
             $table->string('host');
             $table->string('username');
