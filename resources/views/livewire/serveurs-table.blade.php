@@ -91,7 +91,7 @@
                     <tbody>
                     @foreach($serveurs as $serveur)
                         <tr class="border-b dark:0jborder-gray-700">
-                            <td class="px-4 py-3">{{  $serveur->intitule  }}</td>
+                            <td class="px-4 py-3">{{  $serveur->nomServeur }}</td>
                             @foreach($serveur->modules as $module)
                                 <td class="px-4 py-3">{{  $module->nomModule  }}</td>
                             @endforeach

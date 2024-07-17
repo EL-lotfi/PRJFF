@@ -72,6 +72,7 @@
         <circle cx="18" cy="10" r="1" />
         <circle cx="18" cy="15" r="1" />        
     </svg>
+
     </x-slot>
     {{ __('Suivi de Deploiments') }}
 </x-sidebar-nav-link>

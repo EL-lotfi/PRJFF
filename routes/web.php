@@ -20,10 +20,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified' , 'standard'])->name('dashboard');
 
-Route::get('/admin', function () {
-    $srv = Serveur::find(1);
-    return $srv->requetes;
-})->middleware(['auth', 'verified' , 'admin'])->name('admin');
+// Route::get('/admin', function () {
+//     $srv = Serveur::find(1);
+//     return $srv->requetes;
+// })->middleware(['auth', 'verified' , 'admin'])->name('admin');
 
 Route::get('/configserver', function () {
     return view('admin.configserver');

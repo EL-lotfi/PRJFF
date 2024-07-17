@@ -83,8 +83,8 @@
     <table class="w-full text-sm text-left text-gray-500 dark:00jtext-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:00jbg-gray-700 dark:00jtext-gray-400">
             <tr>
-                <th scope="col" class="px-4 py-3">Requete</th>
-                <th scope="col" class="px-4 py-3">Developpeur</th>
+                <th scope="col" class="px-4 py-3">Description </th>
+                <th scope="col" class="px-4 py-3">Serveur</th>
                 <th scope="col" class="px-4 py-3">Date</th>
                 <th scope="col" class="px-4 py-3">
                     <span class="sr-only">Actions</span>
@@ -95,23 +95,23 @@
             @foreach($deploiments as $deploiment)
                 <tr class="border-b dark:00jborder-gray-700">
                     <td class="p-4">
-                        
+                    @foreach($deploiment->requetes as $requete)
+                            <td class="px-4 py-3">{{ $requete->requetesSQL }}</td>
+                    @endforeach
                     </td>
-                    <td class="px-4 py-3">{{ $deploiment->descr }}</td>
-                    <tr>
-                        @foreach($deploiments->serveurs as $serveur)
+                    <td class="px-4 py-3"></td>
+                    @foreach($deploiment->serveurs as $serveur)
                             <td class="px-4 py-3">{{ $serveur->nomServeur }}</td>
-                        @endforeach
+                            <tr/>
+                    @endforeach
+                    <tr>
+                        
                     </tr>
                     <tr>
-                        @foreach($deploiments->requetes as $requete)
-                            <td class="px-4 py-3">{{ $requete->requetesSQL }}</td>
-                        @endforeach
+                        
                     </tr>
                     
-                    <td class="px-4 py-3">{{ $deploiment->created_at->format('Y-m-d') }} </td>
                     <td class="px-4 py-3 flex items-center justify-end">
-            endforeach
                         <div x-data="{ open: false }" class="relative inline-block text-left">
                             <button id="apple-imac-27-dropdown-button" 
                                     class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:0text-gray-400 dark:0hover:text-gray-100" 
@@ -147,7 +147,7 @@
 </div>
 
             <nav class=" md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-                {{ $requetes->links() }}
+                {{ $deploiments->links() }}
             </nav>
         
         </div>

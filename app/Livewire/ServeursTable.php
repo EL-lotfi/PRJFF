@@ -34,7 +34,7 @@ class ServeursTable extends Component
 
     public function render()
     {
-        $serveurs = Serveur::where('intitule', 'like', '%' . $this->searchTerm . '%')
+        $serveurs = Serveur::where('nomServeur', 'like', '%' . $this->searchTerm . '%')
             ->paginate($this->perPage);
         return view('livewire.serveurs-table', [
             'serveurs' => $serveurs,

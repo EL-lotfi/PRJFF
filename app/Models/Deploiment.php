@@ -38,4 +38,6 @@ class Deploiment extends Model
     {
         return $this->belongsToMany(Requete::class, 'deploiment_requete_serveur','idDeploiment','idRequete');
     }
+
+
 }
