@@ -4,9 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Module;
 use App\Models\Serveur;
-use Faker\Generator as Faker;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Generator as Faker;
 
 class ModuleFactory extends Factory
 {
@@ -15,8 +14,12 @@ class ModuleFactory extends Factory
     public function definition()
     {
         // Get random server ID from existing servers
+        $noms = [
+            "CRM",
+            "GESAPP",            
+        ];
         return [
-            'nomModule' => $this->faker->word(),
+            'nomModule' => fake()->randomElement($noms) . fake()->randomNumber(),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];

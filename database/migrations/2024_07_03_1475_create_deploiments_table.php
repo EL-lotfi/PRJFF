@@ -11,21 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('module_serveur', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('idServeur')->constrained('serveurs','idServeur');
-            $table->foreignId('idModule')->constrained('modules','idModule');
-            $table->string('intitule');
+        Schema::create('deploiments', function (Blueprint $table) {
+            $table->id('idDeploiment');
+            $table->string('descr');
+            $table->string('typeDep');
+            $table->json('listToDo')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
-
     public function down(): void
     {
-        Schema::dropIfExists('module_serveur');
+        Schema::dropIfExists('deploiment');
     }
 };

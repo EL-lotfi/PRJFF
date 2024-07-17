@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('serveurs', function (Blueprint $table) {
             $table->id('idServeur');
+            $table->string('nomServeur');
             $table->string('typeConnexion');
             $table->string('typeServeur');
             $table->string('dbName');

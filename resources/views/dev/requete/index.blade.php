@@ -17,7 +17,6 @@
         @include('layouts.dev-sidebar')
       </div>
     <!-- Main Content -->
-  
     <section class="bg-white rounded-lg shadow-md p-4 flex">
       
     </section>

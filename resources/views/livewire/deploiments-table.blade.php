@@ -83,12 +83,6 @@
     <table class="w-full text-sm text-left text-gray-500 dark:00jtext-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:00jbg-gray-700 dark:00jtext-gray-400">
             <tr>
-                <th scope="col" class="p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-all" type="checkbox" wire:model="selectAll" wire:click="$toggle('selectAll')" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500" >   
-                        <label for="checkbox-all" class="sr-only">checkbox</label>
-                    </div>
-                </th>
                 <th scope="col" class="px-4 py-3">Requete</th>
                 <th scope="col" class="px-4 py-3">Developpeur</th>
                 <th scope="col" class="px-4 py-3">Date</th>
@@ -98,17 +92,26 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($requetes as $requete)
+            @foreach($deploiments as $deploiment)
                 <tr class="border-b dark:00jborder-gray-700">
                     <td class="p-4">
-                        <div class="flex items-center">
-                            <input type="checkbox" value="{{ $requete['idRequete'] }}" wire:model="checkedRequtes"  wire:change=" handleCheckboxChange($event.target.value, $event.target.checked)" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:0focus:ring-primary-600" @if ($selectAll !== false) checked @endif > 
-                        </div>
+                        
                     </td>
-                    <td class="px-4 py-3">{{ $requete->requetesSql }}</td>
-                    <td class="px-4 py-3">{{ $requete->user->name }}</td>
-                    <td class="px-4 py-3">{{ $requete->created_at->format('Y-m-d') }} </td>
+                    <td class="px-4 py-3">{{ $deploiment->descr }}</td>
+                    <tr>
+                        @foreach($deploiments->serveurs as $serveur)
+                            <td class="px-4 py-3">{{ $serveur->nomServeur }}</td>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($deploiments->requetes as $requete)
+                            <td class="px-4 py-3">{{ $requete->requetesSQL }}</td>
+                        @endforeach
+                    </tr>
+                    
+                    <td class="px-4 py-3">{{ $deploiment->created_at->format('Y-m-d') }} </td>
                     <td class="px-4 py-3 flex items-center justify-end">
+            endforeach
                         <div x-data="{ open: false }" class="relative inline-block text-left">
                             <button id="apple-imac-27-dropdown-button" 
                                     class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:0text-gray-400 dark:0hover:text-gray-100" 

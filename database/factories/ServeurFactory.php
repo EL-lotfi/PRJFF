@@ -1,36 +1,28 @@
 <?php
-
 namespace Database\Factories;
 
 use App\Models\Serveur;
-use App\Models\User;
-use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ServeurFactory extends Factory
 {
     protected $model = Serveur::class;
 
-
     public function definition()
     {
-        $serveurTypes =[
+        $serveurTypes = [
             'Database Server',
             'Chat Server',
-            'BuckUp Server',
+            'Backup Server',
         ];
 
-        $connexiontypes =[
+        $connexionTypes = [
             'sqlsrv',
             'mysql',
             'pgsql',
             'sqlite',
         ];
-        $dbNames =[
-            'dbTest',
-            'db1',
-            'Gesimmo',
-        ];
+
         $dbNames = [
             'dbTest',
             'db1',
@@ -57,26 +49,22 @@ class ServeurFactory extends Factory
             'realestate_db',  
             'events_db',       
         ];
-        
-        $users =[
+
+        $users = [
             'user',
-            'owner',
+            'admin',
         ];
-        
+
         return [
-            'typeServeur'=>fake()->randomElement($serveurTypes),
-            'typeConnexion'=>fake()->randomElement($connexiontypes),
-            'dbName' => fake()->randomElement(),
-            'host' => fake()->ipv4,
-            'username'=>fake()->name(),
-            'password'=>0000,
+            'nomServeur'=>"Serveur".$this->faker->randomNumber(),
+            'typeServeur' => $this->faker->randomElement($serveurTypes),
+            'typeConnexion' => $this->faker->randomElement($connexionTypes),
+            'dbName' => $this->faker->randomElement($dbNames),
+            'host' => $this->faker->ipv4,
+            'username' => $this->faker->randomElement($users) . $this->faker->randomNumber(),
+            'password' => '0000',
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
-    }
-
-    private function randomElement($array)
-    {
-        return $array[array_rand($array)];
     }
 }

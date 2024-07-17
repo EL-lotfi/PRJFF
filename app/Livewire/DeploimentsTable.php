@@ -2,12 +2,11 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Requete;
-use App\Models\User;
+use Livewire\Component;
+use App\Models\Deploiment;
 
-class RequetesTable extends Component
+class DeploimentsTable extends Component
 {
     use WithPagination;
 
@@ -35,34 +34,34 @@ class RequetesTable extends Component
 
     public function handleCheckboxChange($value, $checked)
     {
-        if ($checked && !in_array($value, array_column($this->checkedRequetes, 'idRequete'))) {
-            $this->checkedRequetes[] = [
-                'idRequete' => $value,
+        if ($checked && !in_array($value, array_column($this->checkedDeploiments, 'idDeploiment'))) {
+            $this->checkedDeploiments[] = [
+                'idDeploiment' => $value,
                 'timestamp' => Carbon::now()->timestamp,
             ];
         } elseif (!$checked) {
-            $this->checkedRequetes = array_filter($this->checkedRequetes, function ($requete) use ($value) {
-                return $requete['idRequete'] !== $value;
+            $this->checkedDeploiments = array_filter($this->checkedDeploiments, function ($Deploiment) use ($value) {
+                return $Deploiment['idDeploiment'] !== $value;
             });
         }
-        usort($this->checkedRequetes, function ($a, $b) {
+        usort($this->checkedDeploiments, function ($a, $b) {
             return $a['timestamp'] - $b['timestamp'];
         });
         $this->render();
     }
 
-    public function compactChekedRequetes (){
+    public function compactChekedDeploiments (){
         return redirect()->route('deploiment.index')
-            ->with('chekedRequetes',$this->checkedRequetes);
+            ->with('chekedDeploiments',$this->checkedDeploiments);
     }
 
     public function render()
     {
         
-        $requetes = Requete::where('requetesSql', 'like', '%' . $this->searchTerm . '%')
+        $deploiments = Deploiment::where('descr', 'like', '%' . $this->searchTerm . '%')
             ->paginate($this->perPage);
-        return view('livewire.requetes-table', [
-            'requetes' => $requetes,
+        return view('livewire.deploiments-table', [
+            'deploiments' => $deploiments,
         ]);
     }
 }

@@ -36,8 +36,8 @@ class Module extends Model
     
     public function serveurs()
     {
-        return $this->belongsToMany(Serveur::class)
-                    ->withPivot('intitule');;
+        return $this->belongsToMany(Serveur::class,'module_serveur','idServeur','idModule')
+                    ->withPivot('intitule');
 
     }
 

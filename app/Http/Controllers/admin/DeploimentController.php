@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Deploiment;
 
 class DeploimentController extends Controller
 {
@@ -12,7 +13,8 @@ class DeploimentController extends Controller
      */
     public function index()
     {
-        //
+        $deploiments = Deploiment::all();
+        return view('admin.deploiment.index',['deploiments']);
     }
 
     /**

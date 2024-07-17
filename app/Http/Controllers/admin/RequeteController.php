@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Requete;
 use App\Http\Controllers\Controller;
 
-
+    
 class RequeteController extends Controller
 {
     /**

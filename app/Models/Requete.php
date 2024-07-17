@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Version;
 use App\Models\Module;
-use App\Models\Requete;
 use App\Models\Serveur;
+use App\Models\Deploiment;
 
 
 class Requete extends Model
@@ -37,8 +37,7 @@ class Requete extends Model
 
     public function serveurs()
     {
-        return $this->belongsToMany(Serveur::class,'deploiments','idRequete','idServeur')
-                    ->withPivot('typeDep','listToDo','descr');
+        return $this->hasManyThrough(Serveur::class,Deploiment::class,'idRequete','idServeur','idRequete','idServeur');
     }
     
 }

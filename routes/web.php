@@ -3,12 +3,17 @@
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ServeurController;
 use App\Http\Controllers\admin\RequeteController;
+use App\Http\Controllers\admin\DeploimentController;
 use App\Http\Controllers\dev\DevController;
+use App\Models\Deploiment;
 
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    $srv = Deploiment::find(1);
+    return $srv->requetes;
 });
 
 Route::get('/dashboard', function () {
@@ -16,7 +21,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified' , 'standard'])->name('dashboard');
 
 Route::get('/admin', function () {
-    return view('admin.admin');
+    $srv = Serveur::find(1);
+    return $srv->requetes;
 })->middleware(['auth', 'verified' , 'admin'])->name('admin');
 
 Route::get('/configserver', function () {
@@ -53,7 +59,7 @@ Route::middleware(['admin', 'auth', 'verified'])->group(function () {
     Route::put('/admin/serveur/{id}/update', [ServeurController::class, 'update'])->name('serveur.update');
     Route::delete('/admin/serveur/{id}/destroy', [ServeurController::class, 'destroy'])->name('serveur.destroy'); 
 });
-/////////////////////////////module///////////////////////////////
+/////////////////////////////////module//////////////////////////////////
 Route::middleware(['admin', 'auth', 'verified'])->group(function () {
     Route::get('/admin/module', [ModuleController::class, 'index'])->name('module.index');
     Route::get('/admin/module/create', [ModuleController::class, 'create'])->name('module.create');
@@ -61,6 +67,15 @@ Route::middleware(['admin', 'auth', 'verified'])->group(function () {
     Route::get('/admin/module/{id}/edit', [ModuleController::class, 'edit'])->name('module.edit');
     Route::put('/admin/module/{id}/update', [ModuleController::class, 'update'])->name('module.update');
     Route::delete('/admin/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('module.destroy');
+});
+////////////////////////////////deploiment//////////////////////////////////////
+Route::middleware(['admin', 'auth', 'verified'])->group(function () {
+    Route::get('/admin/deploiment', [DeploimentController::class, 'index'])->name('deploiment.index');
+    Route::get('/admin/deploiment/create', [DeploimentController::class, 'create'])->name('deploiment.create');
+    Route::post('/admin/deploiment/store', [DeploimentController::class, 'store'])->name('deploiment.store'); 
+    Route::get('/admin/deploiment/{id}/edit', [DeploimentController::class, 'edit'])->name('deploiment.edit');
+    Route::put('/admin/deploiment/{id}/update', [DeploimentController::class, 'update'])->name('deploiment.update');
+    Route::delete('/admin/deploiment/{id}/destroy', [DeploimentController::class, 'destroy'])->name('deploiment.destroy');
 });
 
 //*******************dev**********************//

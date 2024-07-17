@@ -1,10 +1,17 @@
 <x-sidebar-nav-link :href="route('requete.index')" :active="request()->routeIs('requete.index')" class="mt-7 ">                
     <x-slot name="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Database Icon -->
+        <ellipse cx="12" cy="5" rx="9" ry="4" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M3 5v7c0 2.21 4 4 9 4s9-1.79 9-4V5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M3 12v1c0 2.21 4 4 9 4s9-1.79 9-4v-1" fill="none" stroke="currentColor" stroke-width="2"/>
+        <!-- Query Symbol -->
+    </svg>
+
+
+
     </x-slot>
-    {{ __('Suivi des requêtes') }}
+    {{ __('Suivi de requêtes') }}
 </x-sidebar-nav-link>
 <!-- <button class="toggle-btn focus:outline-none bg-black md:m"> -->
     <!-- Hamburger Icon SVG -->
@@ -14,21 +21,59 @@
 </button> -->
 <x-sidebar-nav-link :href="route('serveur.index')" :active="request()->routeIs('serveur.index')" class="mt-7">
     <x-slot name="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Server Rack -->
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <!-- Server Panels -->
+    <rect x="5" y="5" width="14" height="3" rx="1" ry="1" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="5" y="10" width="14" height="3" rx="1" ry="1" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="5" y="15" width="14" height="3" rx="1" ry="1" fill="none" stroke="currentColor" stroke-width="2"/>
+    <!-- Server Lights -->
+    <circle cx="6.5" cy="6.5" r="0.5" fill="currentColor"/>
+    <circle cx="6.5" cy="11.5" r="0.5" fill="currentColor"/>
+    <circle cx="6.5" cy="16.5" r="0.5" fill="currentColor"/>
+</svg>
+
+
     </x-slot>
-    {{ __('Suivi des serveurs') }}
+    {{ __('Suivi de serveurs') }}
 </x-sidebar-nav-link>
 
 <x-sidebar-nav-link :href="route('module.index')" :active="request()->routeIs('module.index')" class="mt-7">
     <x-slot name="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Application Window -->
+    <rect x="3" y="4" width="18" height="14" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <!-- Application Tabs -->
+    <line x1="3" y1="8" x2="21" y2="8"/>
+    <circle cx="6" cy="6" r="0.5" fill="currentColor"/>
+    <circle cx="9" cy="6" r="0.5" fill="currentColor"/>
+    <circle cx="12" cy="6" r="0.5" fill="currentColor"/>
+    <!-- Cloud Icon -->
+    <path d="M17 18c-1.104 0-2-.896-2-2 0-.588.236-1.124.618-1.508a2.005 2.005 0 011.627-.492A3.008 3.008 0 0119 11c1.657 0 3 1.343 3 3s-1.343 3-3 3h-2z" fill="none" stroke="currentColor" stroke-width="2"/>
+</svg>
+
+
+
     </x-slot>
-    {{ __('Suivi des modules') }}
+    {{ __('Suivi de modules') }}
+</x-sidebar-nav-link>
+
+<x-sidebar-nav-link :href="route('deploiment.index')" :active="request()->routeIs('deploiment.index')" class="mt-7">
+    <x-slot name="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 mr-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M2 6h20v2H2zM2 11h20v2H2zM2 16h20v2H2z" />
+        <path d="M4 4h16v2H4zM4 9h16v2H4zM4 14h16v2H4z" />
+        <circle cx="6" cy="5" r="1" />
+        <circle cx="6" cy="10" r="1" />
+        <circle cx="6" cy="15" r="1" />
+        <circle cx="18" cy="5" r="1" />
+        <circle cx="18" cy="10" r="1" />
+        <circle cx="18" cy="15" r="1" />        
+    </svg>
+    </x-slot>
+    {{ __('Suivi de Deploiments') }}
 </x-sidebar-nav-link>
 
 <form method="POST" action="{{ route('logout') }}" class="mt-7">
